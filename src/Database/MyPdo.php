@@ -41,7 +41,8 @@ use PDOException;
  * @enduml
  *
  */
-final class MyPdo extends PDO {
+final class MyPdo extends PDO
+{
     /**
      * Instance unique de PDO.
      */
