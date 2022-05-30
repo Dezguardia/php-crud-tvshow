@@ -19,5 +19,12 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.8"
+    },
+    "scripts": {
+        "run-server": [
+            "Composer\\Config::disableProcessTimeout",
+            "php -d display_errors -S localhost:8000 -t public/"
+
+        ]
     }
 }
