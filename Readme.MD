@@ -22,6 +22,13 @@ Ajout du script "run-server" dans composer.json
         "run-server": [
             "Composer\\Config::disableProcessTimeout",
             "php -d display_errors -S localhost:8000 -t public/"
+        ],
+        "test:cs": [
+            "php vendor/bin/php-cs-fixer fix --dry-run --diff"
+        ],
+
+        "fix:cs": [
+            "php vendor/bin/php-cs-fixer fix"
         ]
     }
 
