@@ -72,6 +72,7 @@ class TvShow
     /**
      * @param int $showId
      * @return TvShow
+     * @throws EntityNotFoundException
      */
     public function findById(int $showId): TvShow
     {
@@ -85,7 +86,12 @@ class TvShow
         $stmt->bindParam(':id', $showId);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, TvShow::class);
-        return $stmt->fetch();
+        $tvshow = $stmt->fetch();
+        if ($tvshow) {
+            return $tvshow;
+        } else {
+            throw new EntityNotFoundException('Entité introuvable');
+        }
     }
 
     /**
