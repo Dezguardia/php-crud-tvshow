@@ -35,12 +35,12 @@ $showname = $tvshow->getName();
 $showOriginalName = $tvshow->getOriginalName();
 $showOverview = $tvshow->getOverview();
 
-$tvshowpage->appendContent("<h1>Séries TV : ".$tvshow->getName()."</h1>\n");
-$tvshowpage->appendContent("<div class = 'tvshow_info'>\n");
-$tvshowpage->appendContent("    <div class = 'tvshow_info_name'>$showname</div>\n");
-$tvshowpage->appendContent("    <div class = 'tvshow_info_originalname'>$showOriginalName</div>\n");
-$tvshowpage->appendContent("    <div class = 'tvshow_info_overview'>$showOverview</div>\n");
-$tvshowpage->appendContent("</div>\n");
+$tvshowpage->appendContent("        <h1>Séries TV : ".$tvshow->getName()."</h1>\n");
+$tvshowpage->appendContent("        <div class = 'tvshow_info'>\n");
+$tvshowpage->appendContent("            <div class = 'tvshow_info_name'>$showname</div>\n");
+$tvshowpage->appendContent("            <div class = 'tvshow_info_originalname'>$showOriginalName</div>\n");
+$tvshowpage->appendContent("            <div class = 'tvshow_info_overview'>$showOverview</div>\n");
+$tvshowpage->appendContent("        </div>\n");
 
 for ($i=0;$i<count($stmt);$i++) {
     $name = WebPage::escapeString((string)$stmt[$i]->getName());
