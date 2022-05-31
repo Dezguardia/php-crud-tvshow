@@ -90,5 +90,12 @@ class WebPage
         $script= '<script type="text/javascript" src="'.$js.'"></script>';
         $this->appendToHead($script);
     }
+    /**Ajouter un contenu dans $this->body
+     * @param string $content
+     */
+    public function appendContent(string $content): void
+    {
+        $this->body.=$content;
+    }
 
 }
