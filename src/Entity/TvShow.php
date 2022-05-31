@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Entity;
 
+require_once "Season.php";
 use Database\MyPdo;
 use Entity\Collection\SeasonCollection;
 use mysql_xdevapi\Exception;
 use PDO;
+use Entity\Season;
 
 class TvShow
 {
