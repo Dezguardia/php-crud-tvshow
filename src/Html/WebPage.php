@@ -43,5 +43,12 @@ class WebPage
         return $this->body;
     }
 
+    /**Affecter le titre de la page
+     * @param string $title le titre
+     */
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
 
 }
