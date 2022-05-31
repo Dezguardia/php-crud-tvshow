@@ -6,6 +6,7 @@ use Database\MyPdo;
 require_once "../src/Database/MyPdo.php";
 require_once "../src/Html/WebPage.php";
 require_once "../src/Entity/TvShow.php";
+require_once "../src/Entity/Collection/SeasonCollection.php";
 use Entity\TvShow;
 use Entity\Collection\SeasonCollection;
 use Entity\Season;
