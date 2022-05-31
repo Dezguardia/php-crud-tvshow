@@ -57,5 +57,21 @@ class WebPage
     {
         $this->head.=$content;
     }
+    /**Ajouter un contenu CSS dans $this->head
+     * @param string $css
+     */
+    public function appendCss(string $css): void
+    {
+        $style = "<style>".$css."</style>";
+        $this->appendToHead($style);
+    }
+    /**Ajouter l'URL d'un script CSS dans $this->head
+     * @param string $url L'URL du script CSS
+     */
+    public function appendCssUrl(string $url): void
+    {
+        $link = '<link rel="stylesheet" href="'.$url.'">';
+        $this->appendToHead($link);
+    }
 
 }
