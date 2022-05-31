@@ -73,5 +73,22 @@ class WebPage
         $link = '<link rel="stylesheet" href="'.$url.'">';
         $this->appendToHead($link);
     }
+    /**Ajouter un contenu JS dans $this->head
+     * @param string $js
+     */
+    public function appendJs(string $js): void
+    {
+        $script= '<script type="text/javascript">'.$js.'</script>';
+        $this->appendToHead($script);
+    }
+
+    /**Ajouter l'URL d'un script JS dans $this->head
+     * @param string $js
+     */
+    public function appendJsUrl(string $js): void
+    {
+        $script= '<script type="text/javascript" src="'.$js.'"></script>';
+        $this->appendToHead($script);
+    }
 
 }
