@@ -114,4 +114,12 @@ class WebPage
         return "<div style='text-align: right'>Dernière modification de cette page le $date à $min</div>";
     }
 
+    /**Protéger les caractères principaux pouvant dégrader la page Web
+     * @param string $string la chaine à protéger
+     * @return string la chaine protégée
+     */
+    public static function escapeString(string $string): string
+    {
+        return htmlspecialchars($string, 3|48, "utf-8");
+    }
 }
