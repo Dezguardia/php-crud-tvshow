@@ -17,15 +17,14 @@ SQL
 );
 
 $stmt->execute();
-echo "<html>\n";
-echo "    <head>\n";
-echo "    </head>\n";
-echo "    <body>\n";
+$page = new \Html\WebPage();
+$page->setTitle('Liste TV show');
 while (($ligne = $stmt->fetch()) !== false) {
-    echo "        <div class='serie'>\n";
-    echo "            <p>{$ligne['name']}</p>\n";
-    echo "            <p>{$ligne['overview']}</p>\n";
-    echo "        </div>\n";
+    $page->appendContent(<<<HTML
+        <div class='serie'>\n
+            <p>{$ligne['name']}</p>\n
+            <p>{$ligne['overview']}</p>\n
+        </div>\n
+    HTML);
 }
-echo "    </body>\n";
-echo "</html>";
+echo $page->toHTML();
