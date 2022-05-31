@@ -97,5 +97,21 @@ class WebPage
     {
         $this->body.=$content;
     }
+    /**Produire la page web complète
+     * @return string
+     */
+    public function toHTML(): string
+    {
+        return '<!doctype html><html lang="fr"><head>'.$this->head.'<meta charset="utf-8"><meta name="viewport"><title>'.$this->title.'</title></head><body>'.$this->body.'<div id="foot"> '.$this->getLastModification().'</div></body></html>';
+    }
+    /**Donner la date et l'heure de la dernière modification du script principale
+     * @return string
+     */
+    public static function getLastModification(): string
+    {
+        $date= date("d/m/Y");
+        $min= date("H:m:s");
+        return "<div style='text-align: right'>Dernière modification de cette page le $date à $min</div>";
+    }
 
 }
