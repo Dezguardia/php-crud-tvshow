@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Elie\PhpCrudTvshow\Html;
+namespace Html;
 
 class WebPage
 {
@@ -49,6 +49,13 @@ class WebPage
     public function setTitle(string $title): void
     {
         $this->title = $title;
+    }
+    /**Ajouter un contenu dans $this->body
+     * @param string $content
+     */
+    public function appendToHead(string $content): void
+    {
+        $this->head.=$content;
     }
 
 }
