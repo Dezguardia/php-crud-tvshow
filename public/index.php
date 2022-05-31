@@ -17,6 +17,7 @@ SQL
 );
 
 $stmt->execute();
+
 echo "<html>\n";
 echo "    <head>\n";
 echo "    </head>\n";
