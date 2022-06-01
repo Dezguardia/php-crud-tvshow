@@ -18,7 +18,7 @@ require_once "../src/Entity/Episode.php";
 MyPDO::setConfiguration('mysql:host=mysql;dbname=jonque01_tvshow;charset=utf8', 'houd0012', 'houd0012');
 
 $seasonpage = new WebPage();
-
+$seasonpage->appendCssUrl("css\style.css");
 $seasonId = intval($_GET['seasonId']);
 $tvShowId = intval($_GET['tvShowId']);
 
@@ -45,7 +45,7 @@ $showname = $tvshow->getName();
 $seasonname = $season->getName();
 $seasonposter = $season->getPosterId();
 
-$seasonpage->setTitle("Séries TV : ".$tvshow->getName()." ".$season->getName());
+$seasonpage->setTitle("Séries TV : ".$showname." ".$seasonname);
 
 //Ajout des infos de saison//
 $seasonpage->appendContent(<<<HTML

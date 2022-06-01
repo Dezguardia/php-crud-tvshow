@@ -15,7 +15,7 @@ use Html\WebPage;
 MyPDO::setConfiguration('mysql:host=mysql;dbname=jonque01_tvshow;charset=utf8', 'houd0012', 'houd0012');
 
 $tvshowpage = new WebPage();
-
+$tvshowpage->appendCssUrl('css\style.css');
 $tvshowId = intval($_GET['tvShowId']);
 
 if ($tvshowId == null) {
@@ -48,7 +48,7 @@ $tvshowpage->appendContent(<<<HTML
     HTML);
 
 for ($i=0;$i<count($stmt);$i++) {
-    $name = WebPage::escapeString((string)$stmt[$i]->getName());
+    $name = WebPage::escapeString($stmt[$i]->getName());
     $seasonId = WebPage::escapeString((string)$stmt[$i]->getId());
     $poster = strval($stmt[$i]->getPosterId());
     $tvshowpage->appendContent(<<<HTML
