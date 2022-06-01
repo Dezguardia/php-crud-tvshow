@@ -42,8 +42,10 @@ $filtre = $_GET['genre'];
 if ($filtre == null) {
     header("Location: http://localhost:8000?genre=Tous");
     $show = $stmt->findAll();
-} else {
+} elseif ($_GET['genre'] != "Tous") {
     $show = $stmt->findByGenreName($filtre);
+} else{
+    $show = $stmt->findAll();
 }
 
 $res = 0;
