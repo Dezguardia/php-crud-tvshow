@@ -8,6 +8,7 @@ use Entity\Season;
 use Entity\Collection\EpisodeCollection;
 use Entity\TvShow;
 use Entity\Episode;
+
 require_once "../src/Database/MyPdo.php";
 require_once "../src/Html/WebPage.php";
 require_once "../src/Entity/TvShow.php";
@@ -60,6 +61,9 @@ for ($i=0;$i<count($stmt);$i++) {
     $episodeNumber = WebPage::escapeString((string)$stmt[$i]->getEpisodeNumber());
     $name = WebPage::escapeString((string)$stmt[$i]->getName());
     $overview = WebPage::escapeString((string)$stmt[$i]->getOverview());
+    if (!$overview) {
+        $overview="Pas de description";
+    }
 
     $seasonpage->appendContent(
         <<<HTML
