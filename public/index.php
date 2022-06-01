@@ -20,9 +20,9 @@ $page->appendContent("<h1>Séries TV</h1><div class=list>");
 foreach ($stmt as $ligne) {
     $res += 1;
     if (($res%2) == 1) {
-        $div = "gauche";
+        $div = "alignement_gauche";
     } else {
-        $div = "droite";
+        $div = "alignement_droite";
     }
     $nom = WebPage::escapeString($ligne->getName());
     $tvShowId = WebPage::escapeString((string)$ligne->getId());
