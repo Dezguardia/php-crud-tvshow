@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Entity;
 
+require_once "Season.php";
+require_once "Exception/EntityNotFoundException.php";
 use Database\MyPdo;
 use Entity\Collection\SeasonCollection;
-use mysql_xdevapi\Exception;
+use Entity\Exception\EntityNotFoundException;
 use PDO;
+use Entity\Season;
 
 class TvShow
 {
@@ -66,7 +69,12 @@ class TvShow
         return $this->posterId;
     }
 
-    public function findById(int $showId): Artist
+    /**
+     * @param int $showId
+     * @return TvShow
+     * @throws EntityNotFoundException
+     */
+    public function findById(int $showId): TvShow
     {
         $stmt = MyPDO::getInstance()->prepare(
             <<<'SQL'
@@ -75,22 +83,23 @@ class TvShow
             WHERE id = :id
         SQL
         );
-        $stmt->bindParam(':id', $showid);
+        $stmt->bindParam(':id', $showId);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, Season::class);
-        $tvshow= $stmt->fetch();
-
+        $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, TvShow::class);
+        $tvshow = $stmt->fetch();
         if ($tvshow) {
             return $tvshow;
         } else {
-            throw new Exception("Entité non trouvée");
+            throw new EntityNotFoundException('Entité introuvable');
         }
     }
 
+    /**
+     * @return Season[]
+     */
     public function getSeasons(): array
     {
         $seasons= new SeasonCollection();
         return $seasons->findByTVShowId($this->getId());
     }
-
 }

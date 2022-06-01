@@ -102,7 +102,7 @@ class WebPage
      */
     public function toHTML(): string
     {
-        return '<!doctype html><html lang="fr"><head>'.$this->head.'<meta charset="utf-8"><meta name="viewport"><title>'.$this->title.'</title></head><body>'.$this->body.'<div id="foot"> '.$this->getLastModification().'</div></body></html>';
+        return "<!doctype html>\n<html lang='fr'>\n    <head>".$this->head."\n        <meta charset='utf-8'>\n        <meta name='viewport'>\n        <title>".$this->title."</title>\n    </head>\n    <body>\n".$this->body."        <div id='foot'>\n ".$this->getLastModification()."\n        </div>\n    </body>\n</html>";
     }
     /**Donner la date et l'heure de la dernière modification du script principale
      * @return string
@@ -111,7 +111,7 @@ class WebPage
     {
         $date= date("d/m/Y");
         $min= date("H:m:s");
-        return "<div style='text-align: right'>Dernière modification de cette page le $date à $min</div>";
+        return "           <div class ='lastmodification'>Dernière modification de cette page le $date à $min</div>";
     }
 
     /**Protéger les caractères principaux pouvant dégrader la page Web
