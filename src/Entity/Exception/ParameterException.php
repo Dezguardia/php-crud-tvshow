@@ -2,7 +2,7 @@
 
 namespace Entity\Exception;
 
-class ParameterException
+class ParameterException extends \Exception
 {
 
 }
