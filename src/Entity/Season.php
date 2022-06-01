@@ -2,6 +2,11 @@
 declare(strict_types=1);
 namespace Entity;
 
+use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
+use Entity\Collection\EpisodeCollection;
+use PDO;
+
 class Season
 {
     private int $id;
@@ -50,5 +55,34 @@ class Season
         return $this->tvShowId;
     }
 
+    /**
+     * @param int $seasonId
+     * @return Season
+     * @throws EntityNotFoundException
+     */
+    public function findById(int $seasonId): Season
+    {
+        $stmt = MyPDO::getInstance()->prepare(
+            <<<'SQL'
+            SELECT id, tvShowId, name, seasonNumber, posterId
+            FROM season
+            WHERE id = :id
+        SQL
+        );
+        $stmt->bindParam(':id', $seasonId);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, Season::class);
+        $season = $stmt->fetch();
+        if ($season) {
+            return $season;
+        } else {
+            throw new EntityNotFoundException('Entité introuvable');
+        }
+    }
 
+    public function getEpisodes(): array
+    {
+        $episodes= new EpisodeCollection();
+        return $episodes->findBySeasonId($this->getId());
+    }
 }
