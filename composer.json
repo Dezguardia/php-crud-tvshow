@@ -1,6 +1,6 @@
 {
     "name": "utilisateur/php-crud-tvshow",
-    "description": "D├®veloppement d'une application Web de consultation et modification de s├®ries t├®l├®vis├®es",
+    "description": "Développement d'une application Web de consultation et modification de séries télévisées",
     "type": "project",
     "license": "Copyleft",
     "autoload": {

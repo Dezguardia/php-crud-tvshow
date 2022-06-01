@@ -35,18 +35,19 @@ $showname = $tvshow->getName();
 $showOriginalName = $tvshow->getOriginalName();
 $showOverview = $tvshow->getOverview();
 
-$tvshowpage->appendContent("        <h1>Séries TV : ".$tvshow->getName()."</h1>\n");
-$tvshowpage->appendContent("        <div class = 'tvshow_info'>\n");
-$tvshowpage->appendContent("            <div class = 'tvshow_info_name'>$showname</div>\n");
-$tvshowpage->appendContent("            <div class = 'tvshow_info_originalname'>$showOriginalName</div>\n");
-$tvshowpage->appendContent("            <div class = 'tvshow_info_overview'>$showOverview</div>\n");
-$tvshowpage->appendContent("        </div>\n");
-
+$tvshowpage->appendContent(<<<HTML
+            <h1>Séries TV : {$tvshow->getName()}</h1>\n
+            <div class = 'tvshow_info'>\n
+                <div class = 'tvshow_info_name'>{$showname}</div>\n
+                <div class = 'tvshow_info_originalname'>{$showOriginalName}</div>\n
+                <div class = 'tvshow_info_overview'>{$showOverview}</div>\n
+            </div>\n
+    HTML);
 for ($i=0;$i<count($stmt);$i++) {
     $name = WebPage::escapeString((string)$stmt[$i]->getName());
-    $tvshowpage->appendContent("            <div class='season'>\n");
-    $tvshowpage->appendContent("                <div class='season_name'><p>$name</p></div>\n");
-    $tvshowpage->appendContent("            </div>\n");
+    $tvshowpage->appendContent("        <div class='season'>\n");
+    $tvshowpage->appendContent("            <div class='season_name'><p>$name</p></div>\n");
+    $tvshowpage->appendContent("        </div>\n");
 }
 
 echo $tvshowpage->toHTML();
