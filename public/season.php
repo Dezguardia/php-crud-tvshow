@@ -8,6 +8,11 @@ use Entity\Season;
 use Entity\Collection\EpisodeCollection;
 use Entity\TvShow;
 use Entity\Episode;
+require_once "../src/Database/MyPdo.php";
+require_once "../src/Html/WebPage.php";
+require_once "../src/Entity/TvShow.php";
+require_once "../src/Entity/Collection/EpisodeCollection.php";
+require_once "../src/Entity/Episode.php";
 
 MyPDO::setConfiguration('mysql:host=mysql;dbname=jonque01_tvshow;charset=utf8', 'houd0012', 'houd0012');
 
@@ -42,7 +47,7 @@ $seasonpage->setTitle("Séries TV : ".$tvshow->getName()." ".$season->getName())
 
 //Ajout des infos de saison//
 $seasonpage->appendContent(<<<HTML
-            <h1>Séries TV : {$seasonname}</h1>\n
+            <h1>Séries TV : {$showname}</h1>\n
             <h2>{$season->getName()}</h2>\n
             <div class = 'season_info'>\n
                 <div class = 'season_tvshow_info_name'><a   href="tvshow.php?tvShowId=$tvShowId">{$showname}</a></div>\n

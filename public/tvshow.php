@@ -43,6 +43,7 @@ $tvshowpage->appendContent(<<<HTML
                 <div class = 'tvshow_info_overview'>{$showOverview}</div>\n
             </div>\n
     HTML);
+
 for ($i=0;$i<count($stmt);$i++) {
     $name = WebPage::escapeString((string)$stmt[$i]->getName());
     $seasonId = WebPage::escapeString((string)$stmt[$i]->getId());
