@@ -4,7 +4,7 @@ declare(strict_types=1);
 use Entity\Exception\EntityNotFoundException;
 use Entity\Exception\ParameterException;
 use Entity\Poster;
-
+require_once "../src/Entity/Poster.php";
 try {
     $id = intval($_GET['posterId']);
     if ($id) {
