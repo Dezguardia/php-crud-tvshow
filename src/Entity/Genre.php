@@ -23,5 +23,4 @@ class Genre
         return $this->name;
     }
 
-
 }

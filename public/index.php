@@ -4,6 +4,7 @@ declare(strict_types=1);
 require_once '../vendor/autoload.php';
 
 use Database\MyPdo;
+use Entity\Collection\GenreCollection;
 use Entity\Collection\TvShowCollection;
 use Html\WebPage;
 
@@ -15,8 +16,28 @@ $page->appendCssUrl('css\style.css');
 
 $stmt = new TvShowCollection();
 $stmt = $stmt->findAll();
+$genre = new GenreCollection();
+$genre = $genre->findAll();
+
+$page->appendContent(<<<HTML
+    <h1>Séries TV</h1>
+    <form>
+        <label>
+        Filtrage par genre
+            <select name="genre" >
+    HTML);
+foreach ($genre as $ligne) {
+    $nom = $ligne->getName();
+    $page->appendContent("<option value='$nom'>$nom</option>");
+}
+$page->appendContent(<<<HTML
+            </select>
+        </label>
+        <button type="submit">Envoyer</button>
+    </form>
+    <div class=list>
+HTML);
 $res = 0;
-$page->appendContent("<h1>Séries TV</h1><div class=list>");
 foreach ($stmt as $ligne) {
     $res += 1;
     if (($res%2) == 1) {
