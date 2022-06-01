@@ -18,12 +18,13 @@ $stmt = $stmt->findAll();
 $page->appendContent("<h1>Séries TV</h1><div class=list>");
 foreach ($stmt as $ligne) {
     $nom = WebPage::escapeString($ligne->getName());
+    $tvShowId = WebPage::escapeString((string)$ligne->getId());
     $overview = WebPage::escapeString($ligne->getOverview());
     $page->appendContent(<<<HTML
-        <div class='serie'>\n
-            <p>{$nom}</p>\n
+        <div class='serie'><a href="tvshow.php?tvShowId=$tvShowId"> \n
+            <h2>{$nom}</h2>\n
             <p>{$overview}</p>\n
-        </div>\n
+        </a></div>\n
     HTML);
 }
 $page->appendContent('</div>');
