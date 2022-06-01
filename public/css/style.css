@@ -1,43 +1,53 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: .25em;
+}
 h1{
     text-align: center;
-    margin:0px;
+    margin:0;
+    height: 50px;
 }
 h2{
     text-align: end;
-    margin:0px;
+    margin:0;
 }
 .list{
     overflow: auto;
-    max-height: 47em;
+    max-height: 90%;
 }
 a{
     color: black;
     outline: none;
     text-decoration: none;
 }
-.lastmodification{
+
+.lastmodification,.alignement_droite,.alignement_gauche,.text,.poster_serie{
     display: flex;
+}
+.lastmodification{
     justify-content: center;
 }
 .alignement_droite{
-    display: flex;
     flex-direction: row-reverse;
 }
 .alignement_gauche{
-    display: flex;
     flex-direction: row;
 }
 .text{
-    display: flex;
     flex-direction: column;
     justify-content: center;
 }
 .poster_serie{
-    display: flex;
     justify-content: space-between;
-
 }
-
 img{
     margin:2em;
 }
