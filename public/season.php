@@ -43,14 +43,19 @@ $stmt = $season->getEpisodes();
 
 $showname = $tvshow->getName();
 $seasonname = $season->getName();
+$seasonposter = $season->getPosterId();
 
 $seasonpage->setTitle("Séries TV : ".$tvshow->getName()." ".$season->getName());
 
 //Ajout des infos de saison//
 $seasonpage->appendContent(<<<HTML
+        <div class="season_page_top">\n
             <h1>Séries TV : {$showname}</h1>\n
             <h2>{$season->getName()}</h2>\n
+        </div>\n
+        <div class="list">
             <div class = 'season_info'>\n
+                <div class="season_poster"><img src="poster.php?posterId=$seasonposter" alt=""></div>
                 <div class = 'season_tvshow_info_name'><a   href="tvshow.php?tvShowId=$tvShowId">{$showname}</a></div>\n
                 <div class = 'season_info_name'>{$seasonname}</div>\n
             </div>\n
@@ -67,12 +72,16 @@ for ($i=0;$i<count($stmt);$i++) {
 
     $seasonpage->appendContent(
         <<<HTML
-    <div class="episode">\n
-        <div class="episode_number"><h3>Épisode n°{$episodeNumber}</h3></div>\n
-        <div class="episode_name"><h3>{$name}</h3></div>\n
-        <div class="episode_overview"><p>{$overview}</p></div>\n
-    </div>
+            <div class="episode">\n
+                <div class="episode_number"><h3>Épisode n°{$episodeNumber}</h3></div>\n
+                <div class="episode_name"><h3>{$name}</h3></div>\n
+                <div class="episode_overview"><p>{$overview}</p></div>\n
+            </div>\n
     HTML
     );
 }
+$seasonpage->appendContent(<<<HTML
+    </div>\n
+HTML);
+
 echo $seasonpage->toHTML();
