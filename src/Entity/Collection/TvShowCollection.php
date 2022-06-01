@@ -24,6 +24,6 @@ class TvShowCollection
         SQL
         );
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "Entity\Artist");
+        return $stmt->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, "Entity\TvShow");
     }
 }

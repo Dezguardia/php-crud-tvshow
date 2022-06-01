@@ -8,6 +8,11 @@ use PDO;
 
 class SeasonCollection
 {
+    /**Search a database collection for a document or set of documents.
+     * The found documents are returned as a CollectionFind object is
+     * to further modify or fetch results from.
+     * @return Season[]
+     */
     public function findByTVShowId(int $tvShowId): array
     {
         $stmt = MyPDO::getInstance()->prepare(
