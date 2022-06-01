@@ -34,11 +34,13 @@ $tvshowpage->setTitle("Séries TV : ".$tvshow->getName());
 $showname = $tvshow->getName();
 $showOriginalName = $tvshow->getOriginalName();
 $showOverview = $tvshow->getOverview();
+$tvshowPoster = $tvshow->getPosterId();
 
 $tvshowpage->appendContent(<<<HTML
             <h1>Séries TV : {$tvshow->getName()}</h1>\n
             <div class = 'tvshow_info'>\n
                 <div class = 'tvshow_info_name'>{$showname}</div>\n
+                <div class = 'tvshow_poster'><img src="poster.php?posterId=$tvshowPoster"></div>
                 <div class = 'tvshow_info_originalname'>{$showOriginalName}</div>\n
                 <div class = 'tvshow_info_overview'>{$showOverview}</div>\n
             </div>\n
@@ -47,10 +49,12 @@ $tvshowpage->appendContent(<<<HTML
 for ($i=0;$i<count($stmt);$i++) {
     $name = WebPage::escapeString((string)$stmt[$i]->getName());
     $seasonId = WebPage::escapeString((string)$stmt[$i]->getId());
+    $poster = strval($stmt[$i]->getPosterId());
     $tvshowpage->appendContent(<<<HTML
-    <div class='season'><a href="season.php?tvShowId=$tvshowId&seasonId=$seasonId"\n
-        <div class='season_name'><p>$name</p></div>\n
-    </a></div>\n
+        <div class='season'><a href="season.php?tvShowId=$tvshowId&seasonId=$seasonId">\n
+            <div class ='season_poster'><img src="poster.php?posterId=$poster" alt=""></div>
+            <div class='season_name'><p>$name</p></div>\n
+        </a></div>\n
     HTML);
 }
 
