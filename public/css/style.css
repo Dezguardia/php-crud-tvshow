@@ -20,7 +20,19 @@ a{
     display: flex;
     justify-content: center;
 }
-.serie{
+.droite{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.gauche{
     display: flex;
     flex-direction: row;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+img{
+    margin:2em;
 }

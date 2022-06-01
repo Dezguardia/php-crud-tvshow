@@ -29,10 +29,12 @@ foreach ($stmt as $ligne) {
     $overview = WebPage::escapeString($ligne->getOverview());
     $posterId = strval($ligne->getPosterId());
     $page->appendContent(<<<HTML
-        <a href="tvshow.php?tvShowId=$tvShowId" class="serie">
-            <img src='poster.php?posterId=$posterId' class="$div">
-            <h3>$nom</h3>
-            <p>$overview</p>
+        <a href="tvshow.php?tvShowId=$tvShowId" class="$div">
+            <img src='poster.php?posterId=$posterId'>
+            <div class="text">
+                <h3>$nom</h3>
+                <p>$overview</p>
+            </div>
         </a>
     HTML);
 }
