@@ -45,9 +45,12 @@ $tvshowpage->appendContent(<<<HTML
     HTML);
 for ($i=0;$i<count($stmt);$i++) {
     $name = WebPage::escapeString((string)$stmt[$i]->getName());
-    $tvshowpage->appendContent("        <div class='season'>\n");
-    $tvshowpage->appendContent("            <div class='season_name'><p>$name</p></div>\n");
-    $tvshowpage->appendContent("        </div>\n");
+    $seasonId = WebPage::escapeString((string)$stmt[$i]->getId());
+    $tvshowpage->appendContent(<<<HTML
+    <div class='season'><a href="season.php?tvShowId=$tvshowId&seasonId=$seasonId"\n
+        <div class='season_name'><p>$name</p></div>\n
+    </a></div>\n
+    HTML);
 }
 
 echo $tvshowpage->toHTML();
