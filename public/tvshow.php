@@ -37,14 +37,16 @@ $showOverview = $tvshow->getOverview();
 $tvshowPoster = $tvshow->getPosterId();
 
 $tvshowpage->appendContent(<<<HTML
-            <h1>Séries TV : {$tvshow->getName()}</h1>\n
-            <div class="list">\n
-                <div class = 'tvshow_info'>\n
-                    <div class = 'tvshow_info_name'>{$showname}</div>\n
-                    <div class = 'tvshow_poster'><img src="poster.php?posterId=$tvshowPoster"></div>
-                    <div class = 'tvshow_info_originalname'>{$showOriginalName}</div>\n
-                    <div class = 'tvshow_info_overview'>{$showOverview}</div>\n
-                </div>\n
+            <h1>Séries TV : {$tvshow->getName()}</h1>
+            <div class="list">
+                <div class = 'saison'>
+                    <img src="poster.php?posterId=$tvshowPoster">
+                    <div class="text">
+                        <h2>$showname</h2>
+                        <h2>$showOriginalName</h2>
+                        <p>$showOverview</p>
+                    </div>
+                </div>
     HTML);
 
 for ($i=0;$i<count($stmt);$i++) {
@@ -52,13 +54,17 @@ for ($i=0;$i<count($stmt);$i++) {
     $seasonId = WebPage::escapeString((string)$stmt[$i]->getId());
     $poster = strval($stmt[$i]->getPosterId());
     $tvshowpage->appendContent(<<<HTML
-                <div class='season'><a href="season.php?tvShowId=$tvshowId&seasonId=$seasonId">\n
-                    <div class ='season_poster'><img src="poster.php?posterId=$poster" alt=""></div>
-                    <div class='season_name'><p>$name</p></div>\n
-                </a></div>\n
+                <div class='season'>
+                    <a href="season.php?tvShowId=$tvshowId&seasonId=$seasonId">
+                        <div class ='gauche'>
+                        <img src="poster.php?posterId=$poster" alt="">
+                        <div class="text"> <h2>$name</h2> </div>
+                        </div>
+                    </a>
+                </div>
     HTML);
 }
 $tvshowpage->appendContent(<<<HTML
-        </div>\n
+        </div>
 HTML);
 echo $tvshowpage->toHTML();
