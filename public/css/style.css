@@ -16,15 +16,14 @@ a{
     text-decoration: none;
 }
 .lastmodification{
-
     display: flex;
     justify-content: center;
 }
-.droite{
+.alignement_droite{
     display: flex;
     flex-direction: row-reverse;
 }
-.gauche{
+.alignement_gauche{
     display: flex;
     flex-direction: row;
 }
@@ -33,7 +32,7 @@ a{
     flex-direction: column;
     justify-content: center;
 }
-.saison{
+.poster_serie{
     display: flex;
     justify-content: space-between;
 

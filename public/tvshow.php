@@ -39,7 +39,7 @@ $tvshowPoster = $tvshow->getPosterId();
 $tvshowpage->appendContent(<<<HTML
             <h1>Séries TV : {$tvshow->getName()}</h1>
             <div class="list">
-                <div class = 'saison'>
+                <div class = 'poster_serie'>
                     <img src="poster.php?posterId=$tvshowPoster">
                     <div class="text">
                         <h2>$showname</h2>
@@ -54,9 +54,9 @@ for ($i=0;$i<count($stmt);$i++) {
     $seasonId = WebPage::escapeString((string)$stmt[$i]->getId());
     $poster = strval($stmt[$i]->getPosterId());
     $tvshowpage->appendContent(<<<HTML
-                <div class='season'>
+                <div class='poster_serie'>
                     <a href="season.php?tvShowId=$tvshowId&seasonId=$seasonId">
-                        <div class ='gauche'>
+                        <div class ='alignement_gauche'>
                         <img src="poster.php?posterId=$poster" alt="">
                         <div class="text"> <h2>$name</h2> </div>
                         </div>
