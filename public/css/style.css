@@ -1,0 +1,38 @@
+h1{
+    text-align: center;
+    margin:0px;
+}
+h2{
+    text-align: end;
+    margin:0px;
+}
+.list{
+    overflow: auto;
+    max-height: 47em;
+}
+a{
+    color: black;
+    outline: none;
+    text-decoration: none;
+}
+.lastmodification{
+
+    display: flex;
+    justify-content: center;
+}
+.droite{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.gauche{
+    display: flex;
+    flex-direction: row;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+img{
+    margin:2em;
+}

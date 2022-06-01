@@ -18,7 +18,7 @@ require_once "../src/Entity/Episode.php";
 MyPDO::setConfiguration('mysql:host=mysql;dbname=jonque01_tvshow;charset=utf8', 'houd0012', 'houd0012');
 
 $seasonpage = new WebPage();
-
+$seasonpage->appendCssUrl("css\style.css");
 $seasonId = intval($_GET['seasonId']);
 $tvShowId = intval($_GET['tvShowId']);
 
@@ -44,16 +44,15 @@ $stmt = $season->getEpisodes();
 $showname = $tvshow->getName();
 $seasonname = $season->getName();
 
-$seasonpage->setTitle("Séries TV : ".$tvshow->getName()." ".$season->getName());
+$seasonpage->setTitle("Séries TV : ".$showname." ".$seasonname);
 
 //Ajout des infos de saison//
 $seasonpage->appendContent(<<<HTML
-            <h1>Séries TV : {$showname}</h1>\n
-            <h2>{$season->getName()}</h2>\n
-            <div class = 'season_info'>\n
-                <div class = 'season_tvshow_info_name'><a   href="tvshow.php?tvShowId=$tvShowId">{$showname}</a></div>\n
-                <div class = 'season_info_name'>{$seasonname}</div>\n
-            </div>\n
+            <h1>Séries TV : $showname</h1>
+            <h1>$seasonname</h1>
+            <a   href="tvshow.php?tvShowId=$tvShowId"><h2>$showname</h2></a>
+            <h2>$seasonname</h2>
+            <div class = 'list'>
     HTML);
 
 //Ajout des épisodes//
@@ -67,12 +66,12 @@ for ($i=0;$i<count($stmt);$i++) {
 
     $seasonpage->appendContent(
         <<<HTML
-    <div class="episode">\n
-        <div class="episode_number"><h3>Épisode n°{$episodeNumber}</h3></div>\n
-        <div class="episode_name"><h3>{$name}</h3></div>\n
-        <div class="episode_overview"><p>{$overview}</p></div>\n
+    <div class="episode">
+        <h3>Épisode n°$episodeNumber - $name</h3>
+        <p>{$overview}</p>
     </div>
     HTML
     );
 }
+$seasonpage->appendContent('</div>');
 echo $seasonpage->toHTML();
