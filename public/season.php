@@ -64,9 +64,9 @@ for ($i=0;$i<count($stmt);$i++) {
     $seasonpage->appendContent(
         <<<HTML
     <div class="episode">\n
-        <div class="episode_number"{$episodeNumber}</div>\n
-        <div class="episode_name"{$name}</div>\n
-        <div class="episode_overview"{$overview}</div>\n
+        <div class="episode_number"><h3>Épisode n°{$episodeNumber}</h3></div>\n
+        <div class="episode_name"><h3>{$name}</h3></div>\n
+        <div class="episode_overview"><p>{$overview}</p></div>\n
     </div>
     HTML
     );
