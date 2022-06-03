@@ -248,4 +248,18 @@ class TvShow
         $stmt->execute();
         return $this;
     }
+
+    /**
+     * Execute insert ou update selon que la valeur de id est respectivement null ou non.
+     * @return $this
+     */
+    public function save(): TvShow
+    {
+        if ($this->getId()) {
+            $this->update();
+        } else {
+            $this->insert();
+        }
+        return $this;
+    }
 }
