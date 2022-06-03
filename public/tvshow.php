@@ -37,7 +37,12 @@ $showOverview = $tvshow->getOverview();
 $tvshowPoster = $tvshow->getPosterId();
 
 $tvshowpage->appendContent(<<<HTML
-            <h1>Séries TV : {$tvshow->getName()}</h1>
+            <div class="header">
+                <a href="http://localhost:8000"><img src="img/home.png" class="home"></a>
+                <div class="titre">
+                    <h1>Séries TV : {$tvshow->getName()}</h1>    
+                </div>
+            </div>
             <div class="list">
                 <div class = 'poster_serie'>
                     <img src="poster.php?posterId=$tvshowPoster">

@@ -49,8 +49,13 @@ $seasonpage->setTitle("Séries TV : ".$showname." ".$seasonname);
 
 //Ajout des infos de saison//
 $seasonpage->appendContent(<<<HTML
-        <h1>Séries TV : $showname</h1>
-        <h1>$seasonname</h1>
+        <div class="header">
+            <a href="http://localhost:8000"><img src="img/home.png" class="home"></a>
+            <div class="titre">
+                <h1>Séries TV : $showname</h1>
+                <h1>$seasonname</h1>
+            </div>
+        </div>
         <div class="list">
             <div class="poster_serie">
                 <img src="poster.php?posterId=$seasonposter" alt="">
