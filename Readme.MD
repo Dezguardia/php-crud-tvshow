@@ -34,3 +34,6 @@ Ajout du script "run-server" dans composer.json
 
 On peut maintenant démarrer le serveur local avec composer.
 
+### III. Commentaire
+
+Affichage graphique de l'ajout de séries non implémenté mais les fonctions nécessaires ont été crées ans la classe TvShow.
