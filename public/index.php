@@ -20,7 +20,7 @@ $page->appendContent(<<<HTML
     <h1>Séries TV</h1>
     <form>
         <label>
-        Filtrage par genre
+        <p>Filtrage par genre : </p>
             <select name="genre" required>
                 <option value="Tous">Tous</option>
     HTML);
@@ -61,6 +61,7 @@ foreach ($show as $ligne) {
     $overview = WebPage::escapeString($ligne->getOverview());
     $posterId = strval($ligne->getPosterId());
     $page->appendContent(<<<HTML
+        <div class="case">
         <a href="tvshow.php?tvShowId=$tvShowId" class="$div">
             <img src='poster.php?posterId=$posterId'>
             <div class="text">
@@ -68,6 +69,7 @@ foreach ($show as $ligne) {
                 <p>$overview</p>
             </div>
         </a>
+        </div>
     HTML);
 }
 $page->appendContent('</div>');
