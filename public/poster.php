@@ -13,7 +13,9 @@ try {
         header('Content-Type: image/jpeg');
         echo $poster->getJpeg();
     } else {
-        http_response_code(400);
+        $poster = file_get_contents('img/default.png');
+        header('Content-Type: image/jpeg');
+        echo $poster;
     }
 } catch (EntityNotFoundException) {
     http_response_code(404);
