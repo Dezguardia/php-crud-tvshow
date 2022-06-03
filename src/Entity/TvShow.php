@@ -162,4 +162,62 @@ class TvShow
         $seasons= new SeasonCollection();
         return $seasons->findByTVShowId($this->getId());
     }
+
+    /**
+     * Supprime la série de la base de données dont l'id correspond à celui de l'instance courante.
+     * Rend nul l'id de l'instance courante et la retourne.
+     * @return $this
+     */
+    public function delete(): TvShow
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+        DELETE
+        FROM tvshow
+        WHERE id = :id
+        SQL
+        );
+        $id = $this->getId();
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $this->setId(null);
+    }
+
+    /**
+     * Change le nom de la série dans la base de données correspondant à l'id en lui attribuant la valeur de name de l'instance courante.
+     * @return $this
+     */
+    public function save(): TvShow
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+        UPDATE
+        tvshow
+        SET name = :name
+        WHERE id = :id
+        SQL
+        );
+        $name = $this->getName();
+        $id = $this->getId();
+        $stmt->bindParam('name', $name);
+        $stmt->bindParam('id', $id);
+        $stmt->execute();
+        return $this;
+    }
+
+    /**
+     * Crée une instance de tvshow avec le nom passé le paramètre et l'id facultatif initialisé à null
+     * @param string $name
+     * @param int|null $id
+     * @return TvShow
+     */
+    public function create(string $name, int $id = null): TvShow
+    {
+        $tvshow = new TvShow();
+        $tvshow->setName($name);
+        if ($id) {
+            $tvshow->setId($id);
+        }
+        return $tvshow;
+    }
 }
