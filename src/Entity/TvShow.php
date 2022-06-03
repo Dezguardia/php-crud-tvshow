@@ -14,7 +14,7 @@ use Entity\Season;
 
 class TvShow
 {
-    private int $id;
+    private ?int $id;
     private string $name;
     private string $originalName;
     private string $homepage;
@@ -22,9 +22,9 @@ class TvShow
     private int $posterId;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -67,6 +67,66 @@ class TvShow
     public function getPosterId(): int
     {
         return $this->posterId;
+    }
+
+    /**
+     * @param int|null $id
+     * @return TvShow
+     */
+    public function setId(?int $id): TvShow
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @return TvShow
+     */
+    public function setName(string $name): TvShow
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @param string $originalName
+     * @return TvShow
+     */
+    public function setOriginalName(string $originalName): TvShow
+    {
+        $this->originalName = $originalName;
+        return $this;
+    }
+
+    /**
+     * @param string $homepage
+     * @return TvShow
+     */
+    public function setHomepage(string $homepage): TvShow
+    {
+        $this->homepage = $homepage;
+        return $this;
+    }
+
+    /**
+     * @param string $overview
+     * @return TvShow
+     */
+    public function setOverview(string $overview): TvShow
+    {
+        $this->overview = $overview;
+        return $this;
+    }
+
+    /**
+     * @param int $posterId
+     * @return TvShow
+     */
+    public function setPosterId(int $posterId): TvShow
+    {
+        $this->posterId = $posterId;
+        return $this;
     }
 
     /**
