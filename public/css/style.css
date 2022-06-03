@@ -9,30 +9,45 @@ body {
     flex-direction: column;
     margin: 0;
     padding: .25em;
+    background-color: #121212;
 }
 h1{
+    font-family: sans-serif;
+    color: white;
     text-align: center;
     margin:0;
     height: 50px;
 }
 h2{
+    font-family: sans-serif;
+    color: white;
     text-align: end;
     margin:0;
+}
+h3{
+    font-family: sans-serif;
+    color: white;
 }
 .list{
     overflow: auto;
     max-height: 90%;
 }
 a{
-    color: black;
+    font-family: sans-serif;
+    color: white;
     outline: none;
     text-decoration: none;
 }
-
+p{
+    font-family: sans-serif;
+    color: white;
+}
 .lastmodification,.alignement_droite,.alignement_gauche,.text,.poster_serie{
     display: flex;
 }
 .lastmodification{
+    font-family: sans-serif;
+    color: white;
     justify-content: center;
 }
 .alignement_droite{
@@ -42,6 +57,8 @@ a{
     flex-direction: row;
 }
 .text{
+    font-family: sans-serif;
+    color: white;
     flex-direction: column;
     justify-content: center;
 }
