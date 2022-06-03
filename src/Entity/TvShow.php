@@ -222,6 +222,7 @@ class TvShow
     }
 
     /**
+     * Ajoute l'instance courante dans la base de données.
      * @return TvShow
      */
     public function insert(): TvShow
@@ -232,6 +233,19 @@ class TvShow
         values :id, :name, :originalName, :homepage, :overview, :posterId
         SQL
         );
-
+        $id = $this->getId();
+        $name = $this->getName();
+        $ogname = $this->getOriginalName();
+        $homepage = $this->getHomepage();
+        $overview = $this->getOverview();
+        $posterId = $this->getPosterId();
+        $stmt->bindParam('id', $id);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':originalName', $ogname);
+        $stmt->bindParam(':homepage', $homepage);
+        $stmt->bindParam(':overview', $overview);
+        $stmt->bindParam(':posterId', $posterId);
+        $stmt->execute();
+        return $this;
     }
 }
