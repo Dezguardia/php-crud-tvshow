@@ -187,7 +187,7 @@ class TvShow
      * Change le nom de la série dans la base de données correspondant à l'id en lui attribuant la valeur de name de l'instance courante.
      * @return $this
      */
-    public function save(): TvShow
+    public function update(): TvShow
     {
         $stmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
@@ -219,5 +219,19 @@ class TvShow
             $tvshow->setId($id);
         }
         return $tvshow;
+    }
+
+    /**
+     * @return TvShow
+     */
+    public function insert(): TvShow
+    {
+        $stmt = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+        INSERT INTO tvshow(id, name, originalName, homepage, overview, posterId)
+        values :id, :name, :originalName, :homepage, :overview, :posterId
+        SQL
+        );
+
     }
 }
